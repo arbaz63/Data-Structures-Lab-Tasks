@@ -96,6 +96,16 @@ public:
 
 	}
 
+	//Function to update value of a node by using index of that node
+	void updateValueByIndex(int newValue, int index) {
+		start();
+		for (int i = 0; i < index - 1; i++) {
+			move();
+		}
+		currentNode->setValue(newValue);
+	}
+
+
 	//Function to get size of Link List
 	int getSize() {
 		return size;
