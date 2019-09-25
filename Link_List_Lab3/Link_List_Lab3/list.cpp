@@ -67,6 +67,19 @@ public:
 		}
 	}
 
+	//Function to insert a new node at the start of Link List
+	void insertAtBegin(int number) {
+
+		start();
+		node *temp = new node();
+		temp->setNextNode(currentNode);
+		currentNode = temp;
+		headNode = temp;
+		currentNode->setValue(number);
+		lastCurrentNode = 0;
+		size++;
+	}
+
 	//Function to insert a new node at the end of Link List
 	void insertAtEnd(int number) {
 		start();
