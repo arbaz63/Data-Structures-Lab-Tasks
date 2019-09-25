@@ -29,4 +29,9 @@ int main()
 	linkList.insertAtEnd(1100);
 	cout << "/nNow after adding 50 at the end my Link List is" << endl;
 	linkList.print();
+	//Updated a node having value of 200 at the 5th index in the list by new value 201
+	linkList.updateValueByIndex(201, 5);
+	//Printing the list after updation
+	cout << "/nNow after Updating a node having value of 200 at the 5th index in the list by new value 201 my Link List is" << endl;
+	linkList.print();
 }
