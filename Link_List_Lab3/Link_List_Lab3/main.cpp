@@ -15,4 +15,6 @@ int main()
 	linkList.insert(150);
 	linkList.insert(200);
 	linkList.insert(1000);
+	cout << "Now my Link List is" << endl;
+	linkList.print();
 }
