@@ -67,6 +67,22 @@ public:
 		}
 	}
 
+	//Function to insert a new node at the end of Link List
+	void insertAtEnd(int number) {
+		start();
+		for (int i = 0; i < size; i++) {
+			move();
+		}
+		node *temp = new node();
+		currentNode->setNextNode(temp);
+		lastCurrentNode = currentNode;
+		currentNode = temp;
+		currentNode->setValue(number);
+		currentNode->setNextNode(0);
+		size++;
+
+	}
+
 	//Function to get size of Link List
 	int getSize() {
 		return size;
