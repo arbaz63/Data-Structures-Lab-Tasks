@@ -17,6 +17,14 @@ int main()
 	linkList.insert(1000);
 	cout << "Now my Link List is" << endl;
 	linkList.print();
+	//inserting a node having value of 50 at the start of the Link List
+	linkList.insertAtBegin(50);
+	cout << "/nNow after adding 50 at the beginning my Link List is" << endl;
+	linkList.print();
+	//inserting a node having value of 5 at the start of the Link List
+	linkList.insertAtBegin(5);
+	cout << "/nNow after adding 5 at the beginning my Link List is" << endl;
+	linkList.print();
 	//inserting a node having value of 1100 at the end of the Link List
 	linkList.insertAtEnd(1100);
 	cout << "/nNow after adding 50 at the end my Link List is" << endl;
