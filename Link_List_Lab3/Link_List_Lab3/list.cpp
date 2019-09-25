@@ -96,4 +96,13 @@ public:
 			currentNode = currentNode->getNextNode();
 		}
 	}
+
+	//Function to print all the Nodes in the Link List
+	void print() {
+		start();
+		for (int i = 0; i < size; i++) {
+			cout << get() << endl;
+			move();
+		}
+	}
 };
