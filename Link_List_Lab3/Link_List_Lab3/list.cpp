@@ -105,6 +105,17 @@ public:
 		currentNode->setValue(newValue);
 	}
 
+	//Function to update value of a node by using previous value of that node
+	void updateValue(int newValue, int previousValue) {
+		start();
+		while (currentNode->getNextNode() != 0) {
+			if (currentNode->getValue() == previousValue) {
+				currentNode->setValue(newValue);
+				break;
+			}
+			move();
+		}
+	}
 
 	//Function to get size of Link List
 	int getSize() {
