@@ -45,20 +45,25 @@ int main()
 	cout << "Now after Updating a node having previous value of 150 in the list by new value 151 my Link List is" << endl;
 	linkList.print();
 
+	//Deleting a node from link list
 	cout << "\nList after deleting a node" << endl;
 	linkList.deleteNode(100);
 	linkList.print();
 	cout << "\nTesting\n";
 
+	//Deleting first node from list
 	linkList.deleteNode(5);
 	linkList.print();
 
+	//Calculating sum of all the Values present in link list
 	cout << "\nSum of values present in the list is: " << linkList.sumValue() << endl;
 
+	//Inserting a node at given position
 	cout << "After inserting a node at given position" << endl;
 	linkList.insertByPosition(800, 2);
 	linkList.print();
 
+	//After inserting a node after given value
 	cout << "After inserting a node after given value" << endl;
 	linkList.insertAfterValue(902, 151);
 	linkList.print();
