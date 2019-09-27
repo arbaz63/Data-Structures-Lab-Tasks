@@ -15,7 +15,7 @@ class list {
 
 	//pointer which points to the current Node
 	node *currentNode;
-
+	
 	//pointer which points to the Last Current Node
 	node *lastCurrentNode;
 
@@ -67,6 +67,33 @@ public:
 		}
 	}
 
+	//function to insert a value at certain index
+	void insertByPosition(int value, int position) {
+		start();
+		if (position <= size) {
+			for (int i = 0; i < position - 2; i++) {
+				move();
+			}
+			insert(value);
+		}
+		else {
+			cout << "The position " << position << " is not available in Link list. Node is inserted at the end" << endl;
+			insertAtEnd(value);
+		}
+	}
+
+	
+	void insertAfterValue(int value, int valueOfNodeAfter) {
+		start();
+		for(int i=0; i<size; i++) {
+			if (currentNode->getValue() == valueOfNodeAfter) {
+				insert(value);
+				break;
+			}
+			move();
+		}
+	}
+
 	//Function to insert a new node at the start of Link List
 	void insertAtBegin(int number) {
 
@@ -108,7 +135,7 @@ public:
 	//Function to update value of a node by using previous value of that node
 	void updateValue(int newValue, int previousValue) {
 		start();
-		while (currentNode->getNextNode() != 0) {
+		while (currentNode->getValue() != 0) {
 			if (currentNode->getValue() == previousValue) {
 				currentNode->setValue(newValue);
 				break;
@@ -149,10 +176,94 @@ public:
 
 	//Function to print all the Nodes in the Link List
 	void print() {
-		start();
-		for (int i = 0; i < size; i++) {
-			cout << get() << endl;
-			move();
+		if (headNode == NULL) {
+			cout << "/nLink List is empty/n";
+		}
+		else {
+			start();
+			for (int i = 0; i < size; i++) {
+				cout << get() << endl;
+				if (i < (size - 1)) {
+					move();
+				}
+			}
 		}
 	}
+
+
+
+	void deleteNode(int valueOfNode) {
+		start();
+		for(int i=0; i<size; i++) {
+			if (currentNode->getValue() == valueOfNode) {
+				if (currentNode->getNextNode() != NULL) {
+					if (currentNode == headNode) {
+						if (size == 1) {
+							headNode = NULL;
+							delete currentNode;
+							currentNode = headNode;
+							lastCurrentNode = 0;
+							break;
+						}
+						else {
+							node *ptr;
+							ptr = currentNode->getNextNode();
+							currentNode = ptr;
+							headNode = ptr;
+							ptr = NULL;
+							break;
+						}
+					}
+					else {
+						lastCurrentNode->setNextNode(currentNode->getNextNode());
+						delete currentNode;
+						currentNode = lastCurrentNode;
+						break;
+					}
+				}
+				else {
+					lastCurrentNode->setNextNode(0);
+					delete currentNode;
+					currentNode = lastCurrentNode;
+					break;
+				}
+			}
+			
+			move();
+		}
+		size--;
+		
+	}
+
+	int sumValue() {
+		int sum = 0;
+		start();
+		for (int i = 0; i < size; i++) {
+			sum += currentNode->getValue();
+			move();
+		}
+		return sum;
+	}
+
+	void searchValue(int value) {
+		start();
+		bool flag = false;
+		int index=0;
+		for (int i = 0; i < size; i++) {
+			if (currentNode->getValue() == value) {
+				flag = true;
+				index = i;
+			}
+			move();
+		}
+		if (flag == true) {
+			cout << "The value is present in the link list at index " << index << endl;
+		}
+		else {
+			cout << "The value is not present in the link list" << endl;
+		}
+	}
+
+
+
 };
