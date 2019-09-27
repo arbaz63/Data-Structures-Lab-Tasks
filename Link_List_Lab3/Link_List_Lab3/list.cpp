@@ -85,7 +85,7 @@ public:
 	
 	void insertAfterValue(int value, int valueOfNodeAfter) {
 		start();
-		for(int i=0; i<size; i++) {
+		for(int i=0;i<size;i++) {
 			if (currentNode->getValue() == valueOfNodeAfter) {
 				insert(value);
 				break;
@@ -207,10 +207,10 @@ public:
 						}
 						else {
 							node *ptr;
-							ptr = currentNode->getNextNode();
-							currentNode = ptr;
-							headNode = ptr;
-							ptr = NULL;
+							ptr = currentNode;
+							currentNode = currentNode->getNextNode();
+							headNode = currentNode;
+							delete ptr;
 							break;
 						}
 					}

@@ -28,7 +28,7 @@ public:
 		return value;
 	}
 
-
+	//Getting nextNode
 	node *getNextNode() {
 		return nextNode;
 	}
