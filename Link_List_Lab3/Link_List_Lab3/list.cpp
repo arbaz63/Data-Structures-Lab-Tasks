@@ -190,14 +190,20 @@ public:
 		}
 	}
 
-
+	//Function to delete a node from list
 
 	void deleteNode(int valueOfNode) {
+
 		start();
+
 		for(int i=0; i<size; i++) {
+
 			if (currentNode->getValue() == valueOfNode) {
+
 				if (currentNode->getNextNode() != NULL) {
+
 					if (currentNode == headNode) {
+
 						if (size == 1) {
 							headNode = NULL;
 							delete currentNode;
@@ -235,6 +241,8 @@ public:
 		
 	}
 
+	//Printing the sum of all the values in linklist
+
 	int sumValue() {
 		int sum = 0;
 		start();
@@ -245,6 +253,7 @@ public:
 		return sum;
 	}
 
+	//Searching a value if it is present in the list
 	void searchValue(int value) {
 		start();
 		bool flag = false;
