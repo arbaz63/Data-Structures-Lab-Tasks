@@ -21,6 +21,7 @@ int main()
 
 	//inserting a node having value of 50 at the start of the Link List
 	linkList.insertAtBegin(50);
+
 	cout << "\nNow after adding 50 at the beginning my Link List is" << endl;
 	linkList.print();
 
@@ -48,6 +49,7 @@ int main()
 	//Deleting a node from link list
 	cout << "\nList after deleting a node" << endl;
 	linkList.deleteNode(100);
+
 	linkList.print();
 	cout << "\nTesting\n";
 
@@ -63,9 +65,9 @@ int main()
 	linkList.insertByPosition(800, 2);
 	linkList.print();
 
-	//After inserting a node after given value
+	//After inserting a node after given value  
 	cout << "After inserting a node after given value" << endl;
-	linkList.insertAfterValue(902, 151);
+	linkList.insertAfterValue(902, 151); 
 	linkList.print();
 	system("pause");
 }
