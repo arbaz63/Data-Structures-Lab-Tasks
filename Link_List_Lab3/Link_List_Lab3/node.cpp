@@ -1,5 +1,5 @@
 // DSA Lab 2.cpp : This program is about linked list.
-//
+//This is a node class
 
 #include <iostream>
 
