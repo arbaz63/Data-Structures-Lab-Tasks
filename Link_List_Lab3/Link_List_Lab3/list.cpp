@@ -135,7 +135,7 @@ public:
 	//Function to update value of a node by using previous value of that node
 	void updateValue(int newValue, int previousValue) {
 		start();
-		while (currentNode->getValue() != 0) {
+		for (int i = 0; i < size; i++) {
 			if (currentNode->getValue() == previousValue) {
 				currentNode->setValue(newValue);
 				break;
