@@ -30,7 +30,7 @@ public:
 	void insert(int number) {
 
 		node *temp = new node();
-		if (currentNode != NULL)
+		if (currentNode != NULL)//checking if the list is not empty
 		{
 			temp->setNextNode(currentNode->getNextNode());
 			temp->setPreviousNode(currentNode);
@@ -39,6 +39,7 @@ public:
 			currentNode = temp;
 		}
 		else {
+			//if list is empty
 			temp->setPreviousNode(temp);
 			temp->setNextNode(temp);
 			headNode = temp;
@@ -50,12 +51,12 @@ public:
 
 	//function to insert a value at certain index
 	void insertByPosition(int value, int position) {
-		start();
+		start();//moving to start of list
 		if (position <= size) {
 			for (int i = 0; i < position - 2; i++) {
-				move();
+				move();//moving to the next node in the list
 			}
-			insert(value);
+			insert(value); //inserting the value
 		}
 		else {
 			cout << "The position " << position << " is not available in Link list. Node is inserted at the end" << endl;
@@ -63,24 +64,24 @@ public:
 		}
 	}
 
-
+	//Inserting a node after a value
 	void insertAfterValue(int value, int valueOfNodeAfter) {
-		start();
+		start();//moving to start of list
 		for (int i = 0; i < size; i++) {
 			if (currentNode->getValue() == valueOfNodeAfter) {
-				insert(value);
+				insert(value); //inserting the value at found position
 				break;
 			}
-			move();
+			move();//moving to the next node in the list
 		}
 	}
 
 	//Function to insert a new node at the start of Link List
 	void insertAtBegin(int number) {
 
-		start();
+		start();//moving to start of list
 		if (headNode == NULL) {
-			insert(number);
+			insert(number);//inserting the value at found position
 		}
 		else {
 			node *temp = new node();
@@ -160,7 +161,8 @@ public:
 		}
 	}
 
-	void reverse() {
+	//moving  a node back in the list
+	void moveReverse() {
 		if (currentNode->getPreviousNode() != 0) {
 			currentNode = currentNode->getPreviousNode();
 		}
@@ -180,8 +182,10 @@ public:
 				}
 			}
 		}
+		cout << endl << endl;
 	}
 
+	//Printing the list in reverse order
 	void printReverse() {
 		if (headNode == NULL) {
 			cout << "/nLink List is empty/n";
@@ -192,7 +196,7 @@ public:
 			for (int i = size; i > 0; i--) {
 				cout << get() << " ";
 				if (i > 1) {
-					reverse();
+					moveReverse();
 				}
 			}
 		}
@@ -206,11 +210,11 @@ public:
 
 		for (int i = 0; i < size; i++) {
 
-			if (currentNode->getValue() == valueOfNode) {
+			if (currentNode->getValue() == valueOfNode) {//if the value is found which is to be deleted
 
-					if (currentNode == headNode) {
+					if (currentNode == headNode) {//if the node to be deleted is head node
 
-						if (size == 1) {
+						if (size == 1) { //if there is only one element in list
 							headNode = NULL;
 							delete currentNode;
 							currentNode = headNode;
@@ -218,7 +222,7 @@ public:
 							headNode->setPreviousNode(0);
 							break;
 						}
-						else {
+						else {//if there is not only one element in list
 							headNode = currentNode->getNextNode();
 							headNode->setPreviousNode(currentNode->getPreviousNode());
 							currentNode->setPreviousNode(0);
@@ -228,7 +232,7 @@ public:
 							break;
 						}
 					}
-					else {
+					else { //deleting a node in between of two nodes
 						node *ptr;
 						ptr = currentNode;
 						(currentNode->getPreviousNode())->setNextNode(currentNode->getNextNode());
@@ -244,6 +248,7 @@ public:
 		size--;
 	}
 
+	//deleting a node by position
 	void deleteNodeByPosition(int index) {
 
 		start();
@@ -315,6 +320,55 @@ public:
 		}
 	}
 
+	//Sorting of list in ascending order
+	void ascendingSort() {
+		start();
+		node* ptr;
+		for (int i = 0; i < size; ++i) {
+			ptr = currentNode->getNextNode();
+			for (int j = i + 1; j < size; ++j) {
+				if (currentNode->getValue() < ptr->getValue()) {
 
+					int temp;
+					temp = currentNode->getValue();
+					currentNode->setValue(ptr->getValue());
+					ptr->setValue(temp);
+				}
+				ptr = ptr->getNextNode();
+			}
+			move();
+		}
+	}
 
+	//sorting of list in descending order
+	void descendingSort() {
+		start();
+		node* ptr;
+		for (int i = 0; i < size; ++i) {
+			ptr = currentNode->getNextNode();
+			for (int j = i + 1; j < size; ++j) {
+				if (currentNode->getValue() > ptr->getValue()) {
+
+					int temp;
+					temp = currentNode->getValue();
+					currentNode->setValue(ptr->getValue());
+					ptr->setValue(temp);
+				}
+				ptr = ptr->getNextNode();
+			}
+			move();
+		}
+	}
+
+	// Destructor
+	~list()
+	{
+		for (int i = 0; i < size; i++)
+		{
+			node* newNode = new node();
+			newNode = currentNode;
+			delete newNode;
+			move();
+		}
+	}
 };
