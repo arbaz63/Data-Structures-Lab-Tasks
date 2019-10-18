@@ -78,7 +78,7 @@ public:
 		}
 	}
 
-
+	//inserting a value after given value
 	void insertAfterValue(int value, int valueOfNodeAfter) {
 		start();
 		for (int i = 0; i < size; i++) {
@@ -89,6 +89,7 @@ public:
 			moveForward();
 		}
 	}
+
 
 	//Function to insert a new node at the start of Link List
 	void insertAtBegin(int number) {
@@ -177,7 +178,7 @@ public:
 		}
 	}
 
-	void moveBackward() {
+	void moveReverse() {
 		if (currentNode->getPreviousNode() != 0) {
 			currentNode = currentNode->getPreviousNode();
 		}
@@ -199,7 +200,7 @@ public:
 		}
 	}
 
-	void printBackward() {
+	void printReverse() {
 		if (headNode == NULL) {
 			cout << "/nLink List is empty/n";
 		}
@@ -209,7 +210,7 @@ public:
 			for (int i = size; i > 0; i--) {
 				cout << get() << " ";
 				if (i > 1) {
-					moveBackward();
+					moveReverse();
 				}
 			}
 		}
@@ -238,7 +239,6 @@ public:
 							break;
 						}
 						else {
-							cout << "\nheadNode\n";
 							headNode = currentNode->getNextNode();
 							headNode->setPreviousNode(0);
 							delete currentNode;
@@ -247,7 +247,6 @@ public:
 						}
 					}
 					else {
-						cout << "\n In the middle\n";
 						node *ptr;
 						ptr = currentNode;
 						(currentNode->getPreviousNode())->setNextNode(currentNode->getNextNode());
@@ -258,7 +257,6 @@ public:
 					}
 				}
 				else {
-					cout << "\nlastNode\n";
 					node *ptr;
 					ptr = currentNode;
 					currentNode = currentNode->getPreviousNode();
@@ -273,6 +271,7 @@ public:
 		size--;
 	}
 
+	//Deleting a node by position
 	void deleteNodeByPosition(int index) {
 
 		start();
@@ -292,7 +291,6 @@ public:
 					headNode->setPreviousNode(0);
 				}
 				else {
-					cout << "\nheadNode\n";
 					headNode = currentNode->getNextNode();
 					headNode->setPreviousNode(0);
 					delete currentNode;
@@ -300,7 +298,6 @@ public:
 				}
 			}
 			else {
-				cout << "\n In the middle\n";
 				node *ptr;
 				ptr = currentNode;
 				(currentNode->getPreviousNode())->setNextNode(currentNode->getNextNode());
@@ -310,7 +307,6 @@ public:
 			}
 		}
 		else {
-			cout << "\nlastNode\n";
 			node *ptr;
 			ptr = currentNode;
 			currentNode = currentNode->getPreviousNode();
@@ -349,6 +345,47 @@ public:
 		}
 		else {
 			cout << "The value is not present in the link list" << endl;
+		}
+	}
+	//Fnction for ascending sort
+	void ascendingSort() {
+
+		start();//To make head node the current Node
+		node* ptr;
+
+		for (int i = 0; i < size; ++i) {
+			ptr = currentNode->getNextNode();
+			for (int j = i + 1; j < size; ++j) {
+				if (currentNode->getValue() < ptr->getValue()) {
+
+					int temp;
+					temp = currentNode->getValue();
+					currentNode->setValue(ptr->getValue());
+					ptr->setValue(temp);
+				}
+				ptr = ptr->getNextNode();
+			}
+			moveForward();
+		}
+	}
+
+	//Sorting the list in descending order
+	void descendingSort() {
+		start();
+		node* ptr;
+		for (int i = 0; i < size; ++i) {
+			ptr = currentNode->getNextNode();
+			for (int j = i + 1; j < size; ++j) {
+				if (currentNode->getValue() > ptr->getValue()) {
+
+					int temp;
+					temp = currentNode->getValue();
+					currentNode->setValue(ptr->getValue());
+					ptr->setValue(temp);
+				}
+				ptr = ptr->getNextNode();
+			}
+			moveForward();
 		}
 	}
 
