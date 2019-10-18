@@ -1,3 +1,4 @@
+
 //This Program contains the list class. We declared insert, insert at end, insert at beginning, update value by index,
 //update value by using previous value and print the link list
 
@@ -15,7 +16,7 @@ class list {
 
 	//pointer which points to the current Node
 	node *currentNode;
-	
+
 	//pointer which points to the Last Current Node
 	node *lastCurrentNode;
 
@@ -82,10 +83,10 @@ public:
 		}
 	}
 
-	
+
 	void insertAfterValue(int value, int valueOfNodeAfter) {
 		start();
-		for(int i=0;i<size;i++) {
+		for (int i = 0; i < size; i++) {
 			if (currentNode->getValue() == valueOfNodeAfter) {
 				insert(value);
 				break;
@@ -165,6 +166,13 @@ public:
 		currentNode = headNode;
 	}
 
+	void end() {
+		start();
+		for (int i = 0; i < size; ++i) {
+			move();
+		}
+	}
+
 
 	//Function to move to next Node
 	void move() {
@@ -174,6 +182,14 @@ public:
 		}
 	}
 
+
+	void moveReverse() {
+		end();
+		if (currentNode == headNode) {
+			currentNode = lastCurrentNode;
+
+		}
+	}
 	//Function to print all the Nodes in the Link List
 	void print() {
 		if (headNode == NULL) {
@@ -182,11 +198,12 @@ public:
 		else {
 			start();
 			for (int i = 0; i < size; i++) {
-				cout << get() << endl;
+				cout << get() <<" ";
 				if (i < (size - 1)) {
 					move();
 				}
 			}
+			cout << endl;
 		}
 	}
 
@@ -196,7 +213,7 @@ public:
 
 		start();
 
-		for(int i=0; i<size; i++) {
+		for (int i = 0; i < size; i++) {
 
 			if (currentNode->getValue() == valueOfNode) {
 
@@ -234,11 +251,11 @@ public:
 					break;
 				}
 			}
-			
+
 			move();
 		}
 		size--;
-		
+
 	}
 
 	//Printing the sum of all the values in linklist
@@ -257,7 +274,7 @@ public:
 	void searchValue(int value) {
 		start();
 		bool flag = false;
-		int index=0;
+		int index = 0;
 		for (int i = 0; i < size; i++) {
 			if (currentNode->getValue() == value) {
 				flag = true;
@@ -272,6 +289,46 @@ public:
 			cout << "The value is not present in the link list" << endl;
 		}
 	}
+
+	void ascendingSort() {
+		start();
+		node* ptr;
+		for (int i = 0; i < size; ++i) {
+			ptr = currentNode->getNextNode();
+			for (int j = i + 1; j < size; ++j) {
+				if (currentNode->getValue() < ptr->getValue()) {
+
+					int temp;
+					temp = currentNode->getValue();
+					currentNode->setValue(ptr->getValue());
+					ptr->setValue(temp);
+				}
+				ptr = ptr->getNextNode();
+			}
+			move();
+		}
+	}
+
+	void descendingSort() {
+		start();
+		node* ptr;
+		for (int i = 0; i < size; ++i) {
+			ptr = currentNode->getNextNode();
+			for (int j = i + 1; j < size; ++j) {
+				if (currentNode->getValue() > ptr->getValue()) {
+
+					int temp;
+					temp = currentNode->getValue();
+					currentNode->setValue(ptr->getValue());
+					ptr->setValue(temp);
+				}
+				ptr = ptr->getNextNode();
+			}
+			move();
+		}
+	}
+	
+
 
 
 
