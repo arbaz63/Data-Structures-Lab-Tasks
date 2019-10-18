@@ -9,12 +9,12 @@ using namespace std;
 class node {
 
 	//Declaring private data members
-	int value;
+	float value;
 	node *nextNode;
 public:
 
 	//declaring a function which sets the value in the node
-	void setValue(int v) {
+	void setValue(float v) {
 		value = v;
 	}
 
@@ -24,7 +24,7 @@ public:
 	}
 
 	//Declared a function which returns the value stored in a node
-	int getValue() {
+	float getValue() {
 		return value;
 	}
 
@@ -32,5 +32,6 @@ public:
 	node *getNextNode() {
 		return nextNode;
 	}
+	
 };
 
