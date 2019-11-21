@@ -29,8 +29,8 @@ rideWithPriority& rideWithPriority::addRiders(node *&ptr)
 		rear = rear->getNextNode();
 		rear->setNextNode(NULL);
 		ptr = NULL;
-		return *this;
 		count++;
+		return *this;
 	}
 	else { //if priority is in between front and front
 		node* rptr, * bptr;
